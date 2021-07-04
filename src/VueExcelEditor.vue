@@ -277,10 +277,10 @@
 
 <script>
 import Vue from 'vue'
-import VueExcelFilter from './VueExcelFilter'
-import PanelFilter from './PanelFilter'
-import PanelSetting from './PanelSetting'
-import PanelFind from './PanelFind'
+import VueExcelFilter from './VueExcelFilter.vue'
+import PanelFilter from './PanelFilter.vue'
+import PanelSetting from './PanelSetting.vue'
+import PanelFind from './PanelFind.vue'
 import DatePicker from 'vue2-datepicker'
 import XLSX from 'xlsx'
 
@@ -2614,7 +2614,7 @@ export default {
             }
             list.sort()
           }
-          this.autocompleteSelect = list.findIndex(element => element.toUpperCase().includes(value))
+          this.autocompleteSelect = list.findIndex(element => typeof element == 'number' ? element.toString().includes(value) : element.toUpperCase().includes(value))
           this.autocompleteInputs = list
           const rect = this.currentCell.getBoundingClientRect()
           this.lazy(() => {
