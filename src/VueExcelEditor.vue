@@ -277,10 +277,10 @@
 
 <script>
 import Vue from 'vue'
-import VueExcelFilter from './VueExcelFilter.vue'
-import PanelFilter from './PanelFilter.vue'
-import PanelSetting from './PanelSetting.vue'
-import PanelFind from './PanelFind.vue'
+import VueExcelFilter from './VueExcelFilter'
+import PanelFilter from './PanelFilter'
+import PanelSetting from './PanelSetting'
+import PanelFind from './PanelFind'
 import DatePicker from 'vue2-datepicker'
 import XLSX from 'xlsx'
 
@@ -2506,7 +2506,8 @@ export default {
           field: field,
           oldVal: typeof oldVal !== 'undefined' ? oldVal : '',
           newVal: newVal,
-          err: ''
+          err: '',
+          rowData: row
         }
 
         if (field.validate !== null) transaction.err = field.validate(newVal, oldVal, row, field)
