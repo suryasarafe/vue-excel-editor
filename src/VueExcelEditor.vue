@@ -339,6 +339,8 @@ export default {
     autocompleteCount: {type: Number, default: 50},
     readonly: {type: Boolean, default: false},
     readonlyStyle: {type: Object, default () {return {}}},
+    costumReadonly: {type: Boolean, default: false},
+    costumReadonlyParam: {type: Object, default() {return {text:'', value:''}}},
     remember: {type: Boolean, default: false},
     register: {type: Function, default: null},
     allowAddCol: {type: Boolean, default: false},
@@ -1013,6 +1015,11 @@ export default {
           field.invisible = true
       })
       // this.refresh()
+    },
+
+    checkCostumReadonly(record = {}, field) {
+      if (this.costumReadonly) if (record[field.name + this.costumReadonlyParam.text] === this.costumReadonlyParam.value) return true
+      return field.readonly
     },
 
     /* Still evaluating */
@@ -2301,6 +2308,7 @@ export default {
       this.currentColPos = colPos
       this.currentCell = cell
       this.currentRecord = this.table[top + rowPos]
+      this.currentField.readonly = this.checkCostumReadonly(this.currentRecord, this.currentField)
 
       this.$emit('cell-focus', {rowPos, colPos, cell, record: this.currentRecord})
 
