@@ -113,7 +113,7 @@
                     :id="`id-${record.$id}-${item.name}`"
                     :cell-RC="`${rowPos}-${item.name}`"
                     :class="{
-                      readonly: item.readonly,
+                      readonly: item.readonly || checkCostumReadonly(record, item),
                       error: errmsg[`id-${record.$id}-${item.name}`],
                       link: item.link,
                       select: item.options,
@@ -1019,7 +1019,7 @@ export default {
 
     checkCostumReadonly(record = {}, field) {
       if (this.costumReadonly) if (record[field.name + this.costumReadonlyParam.text] === this.costumReadonlyParam.value) return true
-      return field.readonly
+      return false
     },
 
     /* Still evaluating */
@@ -2308,7 +2308,6 @@ export default {
       this.currentColPos = colPos
       this.currentCell = cell
       this.currentRecord = this.table[top + rowPos]
-      this.currentField.readonly = this.checkCostumReadonly(this.currentRecord, this.currentField)
 
       this.$emit('cell-focus', {rowPos, colPos, cell, record: this.currentRecord})
 
@@ -2898,7 +2897,8 @@ input:focus, input:active:focus, input.active:focus {
   border-bottom: 1px solid lightgray;
 }
 .systable thead th {
-  background-color: #e9ecef;
+  background-color: #1976d2;
+  color: #fff;
   cursor: s-resize;
   z-index: 6;
 }
@@ -2928,7 +2928,8 @@ input:focus, input:active:focus, input.active:focus {
   background-position: right 5px top 8px;
 }
 .systable .first-col {
-  background:#e9ecef;
+  background:#1976d2;
+  color: #fff;
   width: 40px;
   position: sticky;
   left: 0;
@@ -3016,14 +3017,14 @@ input:focus, input:active:focus, input.active:focus {
 .h-scroll {
   z-index: -1;
   position: absolute;
-  background-color: #f4f6f9;
+  background-color: rgba(138, 197, 255, 0.3);
   height: 25px;
   margin-left: 40px;
   width: 65%;
   cursor: pointer;
 }
 .h-scroll:hover, .h-scroll.focus, .footer:hover .h-scroll {
-  background-color: lightgray;
+  background-color: rgba(138, 197, 255, 0.6);
 }
 
 .footer a {
