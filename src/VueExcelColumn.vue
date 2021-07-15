@@ -31,6 +31,7 @@ export default {
     options: {type: [Array, Object, Function], default () {return null}},
     summary: {type: String, default: null},
     sort: {type: Function, default: null},
+    className: {type: String, default: ''},
     toValue: {
       type: Function,
       default (text) {
@@ -196,7 +197,7 @@ export default {
         mandatory: this.mandatory,
         lengthLimit: Number(lengthLimit),
         textTransform: this.textTransform,
-
+        className: this.className,
         get autocomplete () {
           return self._autocomplete === null ? self.$parent.autocomplete : self._autocomplete
         },

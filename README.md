@@ -128,6 +128,7 @@ In your template
 | link           | Optional  | Function          | The function to react to the alt-click on cell text |
 | to-text        | Optional  | Function          | The function to convert from object value to edit-text |
 | to-value       | Optional  | Function          | The function to convert from edit-text to object value |
+| className      | Optional  | String            | Add costum class from global StyleSheet |
 
 @ - Function can return a promise
 

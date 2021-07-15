@@ -118,7 +118,8 @@
                       link: item.link,
                       select: item.options,
                       datepick: item.type == 'date',
-                      'sticky-column': item.sticky
+                      'sticky-column': item.sticky,
+                      [item.className]: true
                     }"
                     :style="Object.assign(cellStyle(record, item), renderColumnCellStyle(item))"
                     :key="p"
@@ -3045,7 +3046,7 @@ input:focus, input:active:focus, input.active:focus {
   right: 0;
   width: 13px;
   z-index: 5;
-  background-color: white;
+  background-color: rgba(138, 197, 255, 0.3);
   border-left: 1px solid lightgray;
   user-select: none;
 }
@@ -3058,7 +3059,7 @@ input:focus, input:active:focus, input.active:focus {
   cursor: pointer;
 }
 .v-scroll-button.focus, .v-scroll-button:hover, .v-scroll:hover .v-scroll-button {
-  background-color: lightgray;
+  background-color: rgba(138, 197, 255, 0.6);
 }
 .runner {
   font-size: 0.88rem;
