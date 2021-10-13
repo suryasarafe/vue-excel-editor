@@ -1,3 +1,6 @@
+### Notes
+This is forked version from [vue-excel-editor](https://www.npmjs.com/package/vue-excel-editor), plus update return row object when update, useful for data manipulation after updated happend.
+
 # Excel Editor for VUE 2
 
 Vue2 plugin for displaying and editing the array-of-object in Excel style. It supports the following features:

@@ -73,6 +73,8 @@ export default {
         if (this.keyField && val && val.toString().startsWith('§')) return ''
 
         switch (this.type) {
+          case 'currency':            
+            return val? val.toString().replace(/(\d)(?=(?:\d{3})+\b)/gm, `$1.`): 0
           case 'date':
             return val? moment(val).format('YYYY-MM-DD'): ''
           case 'datetick':
@@ -106,6 +108,7 @@ export default {
       let lengthLimit = this.lengthLimit
 
       switch (this.type) {
+        case 'currency':
         case 'number':
           style.textAlign = 'right'
           allowKeys = allowKeys || ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '-']
@@ -175,7 +178,7 @@ export default {
 
       if (this.textTransform) style.textTransform = this.textTransform
       if (this.textAlign) style.textAlign = this.textAlign
-      // if (this.readonly && this.$parent.readonlyStyle) style = Object.assign(style, this.$parent.readonlyStyle)
+      if (this.readonly && this.$parent.readonlyStyle) style = Object.assign(style, this.$parent.readonlyStyle)
 
       this._autocomplete = self.autocomplete
       this._readonly = self.readonly
